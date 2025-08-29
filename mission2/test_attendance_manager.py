@@ -63,18 +63,16 @@ def test_assign_grade_boundaries():
 
 def test_calculate_point_and_bonuses():
     u = User("Charlie")
-    # add 10 attendances on training day index 2
+    
     for _ in range(10):
         u.add_attendance(2)
-    # add 10 attendances on weekend day index 5
+
     for _ in range(10):
         u.add_attendance(5)
 
     DefaultPointStrategy.calculate_point(u)
 
-    # base points: training day (10 * 3) + weekend day (10 * 2)
     base = 30 + 20
-    # bonuses: both >=10 so +20
     assert u.points == base + 20
 
 
@@ -111,7 +109,6 @@ def test_get_attendance_list_from_file(tmp_path):
     result = data_loader.get_attendance_list_from_file(str(file_path))
     assert ("Alice", "tuesday") in result
     assert ("Hannah", "thursday") in result
-    # invalid line ignored
     assert not any(len(r) != 2 for r in result)
 
 
