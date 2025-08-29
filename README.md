@@ -1,0 +1,1 @@
+# cra_8_attendance_manager
